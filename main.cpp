@@ -11,6 +11,8 @@
  #include "node.h"
  using namespace std;
 
+ //Add the function prototypes up here
+
  node * root = NULL;
 
  int main() {
@@ -81,3 +83,101 @@
 
 }
 
+ void insert(Node * &current, int num) {
+
+   if (current == NULL) {
+     current = new Node(num, NULL, NULL);
+     returnl
+   }
+   if (num >= current->data) {
+     if (current->right == NULL) {
+       current->right = new Node(num, NULL, NULL);
+       returnl
+     } else {
+       insert(current->right, num);
+     }
+   } else {
+     if (current->left == NULL) {
+       current->left = new Node(num, NULL, NULL);
+       return;
+     } else {
+       insert(current->left, num);
+     }
+   }
+ }
+
+ void search(Node * current, int num) {
+
+   int numB = 0;
+
+   while (current != NULL) {
+     data = current->numB;
+     if(numB == num) {
+       cout << "Number is inside tree" << endl;
+       return;
+     }
+     if(num > numb) {
+       current = current->right;
+     } else {
+       current = current->left;
+     }
+   }
+
+   cout << "Number is not within tree" << endl;
+   
+ }
+
+ void print(Node * current, int fold) {
+
+   if(current == NULL) {
+     return;
+   }
+
+   print(current->right, fold + 1);
+
+   for(int i = 0; i < fold; i++) {
+     cout << "    ";
+   }
+
+   cout << current->data << endl;
+
+   print(current->left, fold + 1);
+   
+ }
+
+ void fileGenerator() {
+
+   int num = 0;
+   ifstream numbers("numbers.txt");
+   srand(time(NULL));
+   vector<int> nums;
+
+   while(!numbers.eof()) {
+     numbers >> num;
+     nums.push_back(num);
+   }
+
+   int count = 0;
+   int rando = 0;
+
+   while(count != 10) {
+     rando = (rand() % 999) + 1;
+     num = nums.at(rando);
+     count << num << " ";
+     insert(root, num);
+     count++;
+   }
+   cout << endl;
+   
+ }
+
+ void manualGenerator() {
+
+   int count = 0;
+   int input = 0;
+
+   cout << "Hey user! Please enter number by number, and also one can cease the loop by entering -1" << endl;
+
+   
+   
+ }
